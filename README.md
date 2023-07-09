@@ -1,16 +1,6 @@
 # Data-structure
 **Maths**
     Divisibility & Large Numbers:
-            Check if a large number is divisible by 3 or not
-            Check if a large number is divisible by 4 or not
-            Check if a large number is divisible by 6 or not
-            Check divisibility by 7
-            Check if a large number is divisible by 9 or not
-            Check if a large number is divisible by 11 or not
-            Divisibility by 12 for a large number
-            Check if a large number is divisible by 13 or not
-            Check if a large number is divisibility by 15
-            Number is divisible by 29 or not
     GCD and LCM:
             LCM of array
             GCD of array
