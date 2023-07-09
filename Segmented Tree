@@ -1,1 +1,54 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int []arr={1,2,3,4,5,6,7,8,9,10,11};
+        int n= arr.length;
+        int  tree[]= new int[4*n+1];
+        build(arr, tree,0,n-1,1);
+
+    }
+    // the time complexity of the build funtion is O(N)
+    public static void build(int[] arr,int[]tree ,int left, int right,int ind){
+        if(start>end) return;
+        if(start==end){
+            tree[ind]=arr[start];
+        }
+        int mid=(start+end)/2;
+        build(arr,tree,2*ind,start,mid);
+        build(arr,tree,2*ind+1,mid+1,end);
+        tree[ind]=Math.min(tree[2*ind+1],tree[2*ind]);
+        return;
+    }
+    //the time complexity of the query function is O(log n)
+    public static int query(int[]tree,int start,int end,int qs,int qe,int ind){
+        //no overlap
+        if(qs>end ||qe<start){
+            return Integer.MAX_VALUE;
+        }
+        //complete overlap
+        if(start>=qs &&end<=qe){
+            return tree[ind];
+        }
+        //partial overlap
+        int mid=(start+end)/2;
+        int left=query(tree, start, mid, qs, qe,2*ind);
+        int right=query(tree, mid+1,end, qs, qe,2*ind+1);
+        return Math.min(left, right);
+    }
+    // time complexity of update function is O(log N)
+    public static void  update(int[] tree, int start, int end,int qs, int qe, int ind,int inc){
+        if(qs>end || qe<start){
+            return;
+        }
+        if(start==end){
+            tree[ind]+=inc;
+        }
+        int mid=(start+end)/2;
+        update(tree, start, mid, qs, qe, 2*ind, inc);
+        update(tree, mid+1, end, qs, qe, 2*ind+1,inc);
+        tree[ind]=Math.min(tree[2*ind+1],tree[2*ind]);
+        return;
+    }
+}
 
