@@ -34,4 +34,15 @@ public class NumberTheoery {
     public static char uppertolower(char c){
              return (char)(c|' ') ;
     }
+    public static int addition(int a, int b){
+        int carry=0,sum=0;
+        while(carry!=0){
+            sum=a^b;
+            carry=(a&b)<<1;
+            a=sum;
+            b= carry;
+        }
+        return sum;
+    }
+    
 }
